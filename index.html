@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙化化工中化分析项目超标指标复检核验流程</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2230;
+    --border: #30363d;
+    --accent: #e8a838;
+    --accent2: #4fc3f7;
+    --accent3: #81c784;
+    --danger: #ef5350;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #484f58;
+    --liquid: #29b6f6;
+    --powder: #ffb74d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(232,168,56,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 400px; height: 200px;
+    background: radial-gradient(circle, rgba(79,195,247,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,168,56,0.1); border: 1px solid rgba(232,168,56,0.3);
+    color: var(--accent); font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  h1 span { color: var(--accent); }
+  .subtitle {
+    color: var(--text-muted); font-size: 14px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .subtitle span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+  /* Layout */
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Section titles */
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; font-weight: 600;
+    color: var(--text); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::before {
+    content: ''; width: 3px; height: 20px;
+    background: var(--accent); border-radius: 2px; flex-shrink: 0;
+  }
+
+  /* Alert box */
+  .alert {
+    background: rgba(239,83,80,0.08); border: 1px solid rgba(239,83,80,0.3);
+    border-left: 4px solid var(--danger);
+    border-radius: 6px; padding: 16px 20px; margin-bottom: 32px;
+    font-size: 13px; color: #ffcdd2; line-height: 1.8;
+  }
+  .alert strong { color: var(--danger); }
+
+  /* ===== FLOWCHART ===== */
+  .flowchart-section { margin-bottom: 56px; }
+
+  .flow-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+
+  .flow-step {
+    width: 100%; max-width: 640px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  .flow-box {
+    width: 100%;
+    padding: 14px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex; align-items: center; gap: 14px;
+    position: relative;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .flow-box:hover { border-color: var(--accent); }
+
+  .flow-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .flow-content { flex: 1; }
+  .flow-title { font-size: 14px; font-weight: 500; color: var(--text); }
+  .flow-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .flow-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    padding: 2px 8px; border-radius: 10px; flex-shrink: 0;
+  }
+
+  /* Color variants */
+  .step-start .flow-box { background: rgba(232,168,56,0.08); border-color: rgba(232,168,56,0.4); }
+  .step-start .flow-num { background: rgba(232,168,56,0.2); color: var(--accent); }
+  .step-start .flow-tag { background: rgba(232,168,56,0.15); color: var(--accent); }
+
+  .step-sample .flow-box { border-color: rgba(79,195,247,0.3); }
+  .step-sample .flow-num { background: rgba(79,195,247,0.15); color: var(--accent2); }
+  .step-sample .flow-tag { background: rgba(79,195,247,0.1); color: var(--accent2); }
+
+  .step-reagent .flow-box { border-color: rgba(129,199,132,0.3); }
+  .step-reagent .flow-num { background: rgba(129,199,132,0.15); color: var(--accent3); }
+  .step-reagent .flow-tag { background: rgba(129,199,132,0.1); color: var(--accent3); }
+
+  .step-method .flow-box { border-color: rgba(206,147,216,0.3); }
+  .step-method .flow-num { background: rgba(206,147,216,0.15); color: #ce93d8; }
+  .step-method .flow-tag { background: rgba(206,147,216,0.1); color: #ce93d8; }
+
+  .step-equip .flow-box { border-color: rgba(255,183,77,0.3); }
+  .step-equip .flow-num { background: rgba(255,183,77,0.15); color: var(--powder); }
+  .step-equip .flow-tag { background: rgba(255,183,77,0.1); color: var(--powder); }
+
+  .step-analysis .flow-box { border-color: rgba(77,208,225,0.3); }
+  .step-analysis .flow-num { background: rgba(77,208,225,0.15); color: #4dd0e1; }
+  .step-analysis .flow-tag { background: rgba(77,208,225,0.1); color: #4dd0e1; }
+
+  .step-data .flow-box { border-color: rgba(239,154,154,0.3); }
+  .step-data .flow-num { background: rgba(239,154,154,0.15); color: #ef9a9a; }
+  .step-data .flow-tag { background: rgba(239,154,154,0.1); color: #ef9a9a; }
+
+  .step-record .flow-box { border-color: rgba(165,214,167,0.3); }
+  .step-record .flow-num { background: rgba(165,214,167,0.15); color: #a5d6a7; }
+  .step-record .flow-tag { background: rgba(165,214,167,0.1); color: #a5d6a7; }
+
+  .step-decision .flow-box {
+    background: rgba(239,83,80,0.06); border-color: rgba(239,83,80,0.4);
+    flex-direction: column; align-items: flex-start; gap: 10px;
+  }
+  .step-decision .flow-num { background: rgba(239,83,80,0.2); color: var(--danger); }
+  .decision-branches {
+    display: flex; gap: 12px; width: 100%; margin-top: 4px;
+  }
+  .branch {
+    flex: 1; padding: 10px 12px; border-radius: 6px; font-size: 12px;
+    border: 1px dashed;
+  }
+  .branch-pass { border-color: rgba(129,199,132,0.4); background: rgba(129,199,132,0.06); color: var(--accent3); }
+  .branch-fail { border-color: rgba(239,83,80,0.4); background: rgba(239,83,80,0.06); color: var(--danger); }
+  .branch-label { font-weight: 600; font-size: 11px; margin-bottom: 4px; }
+
+  .step-end .flow-box { background: rgba(129,199,132,0.08); border-color: rgba(129,199,132,0.4); }
+  .step-end .flow-num { background: rgba(129,199,132,0.2); color: var(--accent3); }
+
+  /* Arrow */
+  .flow-arrow {
+    width: 2px; height: 28px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+    position: relative;
+  }
+  .flow-arrow::after {
+    content: '▼'; position: absolute; bottom: -6px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px; color: var(--text-dim);
+  }
+
+  /* ===== DETAIL CARDS ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: rgba(232,168,56,0.4); transform: translateY(-2px); }
+
+  .card-header {
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-icon { font-size: 18px; }
+  .card-header-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .card-header-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+  .card-body { padding: 16px 18px; }
+
+  .check-list { list-style: none; }
+  .check-list li {
+    padding: 6px 0;
+    font-size: 13px; color: var(--text-muted);
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.6;
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: '◆'; font-size: 7px; color: var(--accent);
+    margin-top: 6px; flex-shrink: 0;
+  }
+
+  .tip-box {
+    background: rgba(232,168,56,0.06); border: 1px solid rgba(232,168,56,0.2);
+    border-radius: 6px; padding: 10px 14px; margin-top: 12px;
+    font-size: 12px; color: #d4a845; line-height: 1.7;
+  }
+  .tip-box strong { color: var(--accent); }
+
+  /* ===== MATRIX TABLE ===== */
+  .matrix-section { margin-bottom: 48px; }
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead tr {
+    background: var(--surface2);
+  }
+  thead th {
+    padding: 12px 16px; text-align: left;
+    font-weight: 600; color: var(--text-muted);
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    transition: background 0.15s;
+  }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 11px 16px; color: var(--text-muted); vertical-align: top; }
+  td:first-child { color: var(--text); font-weight: 500; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 11px; font-weight: 600;
+  }
+  .badge-high { background: rgba(239,83,80,0.15); color: #ef9a9a; }
+  .badge-mid { background: rgba(255,183,77,0.15); color: var(--powder); }
+  .badge-low { background: rgba(129,199,132,0.15); color: var(--accent3); }
+
+  /* ===== RECOMMENDATIONS ===== */
+  .rec-section { margin-bottom: 48px; }
+  .rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .rec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 18px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .rec-card.r1 { border-top-color: var(--accent2); }
+  .rec-card.r2 { border-top-color: var(--accent3); }
+  .rec-card.r3 { border-top-color: var(--accent); }
+  .rec-card.r4 { border-top-color: #ce93d8; }
+  .rec-card.r5 { border-top-color: var(--danger); }
+  .rec-card.r6 { border-top-color: #4dd0e1; }
+  .rec-card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .rec-card-body { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+
+  /* Product type tags */
+  .type-liquid { color: var(--liquid); }
+  .type-powder { color: var(--powder); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    text-align: center;
+    font-size: 12px; color: var(--text-dim);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header { padding: 32px 20px 24px; }
+    .container { padding: 24px 16px 60px; }
+    .flow-box { padding: 12px 14px; }
+    .decision-branches { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">⚗ 质检科质量管理 · Quality Control</div>
+  <h1>龙化化工中化分析项目超标指标<span>复检核验流程</span></h1>
+  <div class="subtitle">
+    <span><span class="dot" style="background:var(--liquid)"></span> 适用：液体产品</span>
+    <span><span class="dot" style="background:var(--powder)"></span> 适用：粉末产品</span>
+    <span><span class="dot" style="background:var(--accent3)"></span> 版本：V2.0</span>
+    <span><span class="dot" style="background:var(--text-dim)"></span> 覆盖6大核验维度</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Alert -->
+  <div class="alert">
+    <strong>⚠ 触发条件：</strong>当初次检验中任一指标超出合格判定标准时，须在 <strong>1小时内</strong> 启动本复检程序。复检须由具备资质的分析人员执行，复检结果作为最终判定依据。复检前严禁对原始样品进行任何处置。
+  </div>
+
+  <!-- ===== FLOWCHART ===== -->
+  <section class="flowchart-section">
+    <div class="section-title">复检核验总流程图</div>
+    <div class="flow-wrap">
+
+      <div class="flow-step step-start">
+        <div class="flow-box">
+          <div class="flow-num">★</div>
+          <div class="flow-content">
+            <div class="flow-title">启动复检 · 初步评估</div>
+            <div class="flow-desc">记录超标指标及偏差幅度 → 隔离原批次样品 → 指定复检负责人</div>
+          </div>
+          <div class="flow-tag">START</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-sample">
+        <div class="flow-box">
+          <div class="flow-num">01</div>
+          <div class="flow-content">
+            <div class="flow-title">样品代表性核验</div>
+            <div class="flow-desc">重新采样 · 核查原始样品状态 · 确认采样规程合规性</div>
+          </div>
+          <div class="flow-tag">样品</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-reagent">
+        <div class="flow-box">
+          <div class="flow-num">02</div>
+          <div class="flow-content">
+            <div class="flow-title">分析试剂确认</div>
+            <div class="flow-desc">核查有效期 · 纯度等级 · 标准溶液标定 · 空白值测定</div>
+          </div>
+          <div class="flow-tag">试剂</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-method">
+        <div class="flow-box">
+          <div class="flow-num">03</div>
+          <div class="flow-content">
+            <div class="flow-title">分析方法核查</div>
+            <div class="flow-desc">确认执行标准版本 · 加标回收率验证 · 干扰因素排查</div>
+          </div>
+          <div class="flow-tag">方法</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-equip">
+        <div class="flow-box">
+          <div class="flow-num">04</div>
+          <div class="flow-content">
+            <div class="flow-title">玻璃器皿 & 仪器设备</div>
+            <div class="flow-desc">清洁度检查 · 容量校准 · 仪器校准状态 · 交叉污染排查</div>
+          </div>
+          <div class="flow-tag">器皿</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-analysis">
+        <div class="flow-box">
+          <div class="flow-num">05</div>
+          <div class="flow-content">
+            <div class="flow-title">执行平行复检分析</div>
+            <div class="flow-desc">至少3次平行 · 盲样对比 · 参考标准品同步分析</div>
+          </div>
+          <div class="flow-tag">分析</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-data">
+        <div class="flow-box">
+          <div class="flow-num">06</div>
+          <div class="flow-content">
+            <div class="flow-title">分析数据处理与统计</div>
+            <div class="flow-desc">离群值检验 · 精密度/准确度评估 · 不确定度计算</div>
+          </div>
+          <div class="flow-tag">数据</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-record">
+        <div class="flow-box">
+          <div class="flow-num">07</div>
+          <div class="flow-content">
+            <div class="flow-title">记录归档</div>
+            <div class="flow-desc">原始记录完整性 · 电子台账录入 · 复检报告签字审核</div>
+          </div>
+          <div class="flow-tag">记录</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-decision">
+        <div class="flow-box">
+          <div class="flow-num">⊙</div>
+          <div class="flow-content" style="width:100%">
+            <div class="flow-title" style="margin-bottom:12px">综合判定 · 结果裁定</div>
+            <div class="decision-branches">
+              <div class="branch branch-pass">
+                <div class="branch-label">✓ 复检合格</div>
+                初检为误差所致 → 批次放行 → 原始异常归因分析 → 改进措施记录
+              </div>
+              <div class="branch branch-fail">
+                <div class="branch-label">✕ 复检仍超标</div>
+                确认不合格 → 批次隔离 → 启动偏差调查 → 通知生产/供应商 → 处置决策
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-step step-end">
+        <div class="flow-box">
+          <div class="flow-num">✓</div>
+          <div class="flow-content">
+            <div class="flow-title">闭环处置 & CAPA跟踪</div>
+            <div class="flow-desc">根本原因分析 → 纠正预防措施 → 效果验证 → 流程更新</div>
+          </div>
+          <div class="flow-tag">END</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== DETAIL CARDS ===== -->
+  <section>
+    <div class="section-title">六大核验维度 · 详细操作要点</div>
+    <div class="cards-grid">
+
+      <!-- 1. 样品 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">🧪</span>
+          <div>
+            <div class="card-header-title">① 样品代表性核验</div>
+            <div class="card-header-sub">Sampling Representativeness</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="check-list">
+            <li>核查原始采样位置：<span class="type-liquid">液体</span>需确认是否搅拌均匀后采样，避免分层；<span class="type-powder">粉末</span>需多点采样（上、中、下层）</li>
+            <li>检查样品容器密封性、洁净度，排除容器污染导致的假超标</li>
+            <li>按标准采样量重新取样，平行取3份，其中1份留存备查</li>
+            <li>核查样品运输/储存条件：温度、光照、时间是否符合规范</li>
+            <li><span class="type-powder">粉末产品</span>额外确认是否存在结块、吸潮现象，分析前需充分研磨混匀</li>
+          </ul>
+          <div class="tip-box"><strong>建议：</strong>采样过程应有第二人见证并签字，记录采样时间、位置、环境条件。</div>
+        </div>
+      </div>
+
+      <!-- 2. 试剂 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">⚗️</span>
+          <div>
+            <div class="card-header-title">② 分析试剂确认</div>
+            <div class="card-header-sub">Reagent Verification</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="check-list">
+            <li>逐一核查所用试剂有效期、纯度等级（分析纯/优级纯），确认与方法要求一致</li>
+            <li>标准溶液重新标定，特别关注近期配制的标液是否经过复核</li>
+            <li>重新配制关键试剂（缓冲液、显色剂等），做试剂空白测定</li>
+            <li>检查试剂保存条件（避光、低温）是否得到遵守</li>
+            <li>对于滴定分析，标准溶液浓度须经独立标定两次以上取均值</li>
+          </ul>
+          <div class="tip-box"><strong>建议：</strong>关键标准品应保留原始COA证书，溯源至国家基准或国际标准。</div>
+        </div>
+      </div>
+
+      <!-- 3. 方法 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">📋</span>
+          <div>
+            <div class="card-header-title">③ 分析方法核查</div>
+            <div class="card-header-sub">Method Verification</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="check-list">
+            <li>核查执行标准版本号（GB/HG/ISO）是否为最新有效版本</li>
+            <li>逐步核对操作流程，重点关注温度、时间、pH等关键参数</li>
+            <li>进行加标回收实验（目标回收率90–110%），验证方法适用性</li>
+            <li>排查基质干扰：<span class="type-liquid">液体样品</span>关注颜色/浑浊度干扰；<span class="type-powder">粉末样品</span>关注溶解性和消解完全性</li>
+            <li>评估方法检出限（LOD）是否满足当前检测需求</li>
+          </ul>
+          <div class="tip-box"><strong>建议：</strong>对于非标方法需进行完整的方法确认，包括线性范围、精密度和准确度评估。</div>
+        </div>
+      </div>
+
+      <!-- 4. 器皿 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">🔬</span>
+          <div>
+            <div class="card-header-title">④ 玻璃器皿 & 仪器</div>
+            <div class="card-header-sub">Glassware & Instrument Check</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="check-list">
+            <li>容量瓶、移液管、滴定管须确认在校准有效期内，且经过洁净处理</li>
+            <li>玻璃器皿清洗流程：洗涤剂→自来水→纯水润洗3次，关键器皿再用HNO₃浸泡</li>
+            <li>仪器设备（分光光度计、色谱仪、天平等）核查最新校准/检定证书</li>
+            <li>天平须在分析前用标准砝码校验，波动须在±0.0002g以内</li>
+            <li>排查同批次器皿可能存在的交叉污染，尤其是痕量分析场景</li>
+          </ul>
+          <div class="tip-box"><strong>建议：</strong>专用器皿专项使用，用不褪色标签标记，避免与其他项目混用。</div>
+        </div>
+      </div>
+
+      <!-- 5. 数据 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <div>
+            <div class="card-header-title">⑤ 分析数据处理</div>
+            <div class="card-header-sub">Data Processing & Statistics</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="check-list">
+            <li>至少3次平行，用Grubbs检验或Dixon检验剔除离群值</li>
+            <li>计算相对标准偏差（RSD），一般要求RSD ≤ 2%（精密仪器）或 ≤ 5%（滴定/重量法）</li>
+            <li>与标准品/参考物质对比，计算偏倚（Bias），评估系统误差</li>
+            <li>核算测量不确定度，确认超标是否在不确定度范围内</li>
+            <li>重新核查计算公式、单位换算、稀释倍数等是否有错误</li>
+          </ul>
+          <div class="tip-box"><strong>建议：</strong>使用软件（Excel/LIMS）进行数据处理，减少人工计算错误，保留计算过程截图。</div>
+        </div>
+      </div>
+
+      <!-- 6. 记录 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">📁</span>
+          <div>
+            <div class="card-header-title">⑥ 记录与归档管理</div>
+            <div class="card-header-sub">Records & Documentation</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="check-list">
+            <li>原始记录须在检测当时填写，不得事后追记，不得涂改（修改须划改并签名）</li>
+            <li>记录内容：日期、操作人、样品编号、仪器编号、原始数据读数、环境条件</li>
+            <li>复检报告须包含：初检/复检对比数据、超标分析结论、负责人签字、复核人签字</li>
+            <li>电子数据须备份</li>
+            <li>保存所有相关谱图（色谱图、光谱图）作为原始数据的一部分</li>
+          </ul>
+          <div class="tip-box"><strong>建议：</strong>建立复检专项记录模板，实现标准化填写，便于后期溯源和趋势分析。</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MATRIX TABLE ===== -->
+  <section class="matrix-section">
+    <div class="section-title">常见超标原因排查矩阵</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>超标来源</th>
+            <th>具体原因</th>
+            <th>适用产品</th>
+            <th>风险等级</th>
+            <th>核验方式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>样品问题</td>
+            <td>采样不均匀；样品降解；容器污染</td>
+            <td>液体 · 粉末</td>
+            <td><span class="badge badge-high">高</span></td>
+            <td>重新采样 + 平行样对比</td>
+          </tr>
+          <tr>
+            <td>试剂问题</td>
+            <td>标液过期失效；空白值偏高；纯度不足</td>
+            <td>液体 · 粉末</td>
+            <td><span class="badge badge-high">高</span></td>
+            <td>重新配制 + 空白测定</td>
+          </tr>
+          <tr>
+            <td>方法问题</td>
+            <td>基质干扰；版本错误；参数偏差</td>
+            <td>液体（颜色深）· 粉末（难溶）</td>
+            <td><span class="badge badge-mid">中</span></td>
+            <td>加标回收 + 标准核对</td>
+          </tr>
+          <tr>
+            <td>器皿问题</td>
+            <td>清洗不彻底；容量超差；交叉污染</td>
+            <td>液体 · 粉末</td>
+            <td><span class="badge badge-mid">中</span></td>
+            <td>更换器皿 + 空白对比</td>
+          </tr>
+          <tr>
+            <td>仪器问题</td>
+            <td>未校准；漂移；检测器污染</td>
+            <td>液体（仪器法为主）</td>
+            <td><span class="badge badge-mid">中</span></td>
+            <td>校准验证 + 标准品核查</td>
+          </tr>
+          <tr>
+            <td>操作问题</td>
+            <td>操作失误；环境污染；计算错误</td>
+            <td>液体 · 粉末</td>
+            <td><span class="badge badge-low">低</span></td>
+            <td>复核计算 + 双人复检</td>
+          </tr>
+          <tr>
+            <td>产品本身</td>
+            <td>生产工艺异常；原料不合格；批次波动</td>
+            <td>液体 · 粉末</td>
+            <td><span class="badge badge-high">高</span></td>
+            <td>第三方检测 + 工艺追溯</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== RECOMMENDATIONS ===== -->
+  <section class="rec-section">
+    <div class="section-title">关键建议 · Best Practices</div>
+    <div class="rec-grid">
+      <div class="rec-card r1">
+        <div class="rec-card-title">🔄 双人独立复检原则</div>
+        <div class="rec-card-body">复检须由不同于初检的分析人员执行，消除操作习惯导致的系统偏差。必要时可安排第三方实验室盲样比对。</div>
+      </div>
+      <div class="rec-card r2">
+        <div class="rec-card-title">📈 趋势数据对比</div>
+        <div class="rec-card-body">将本次结果与该产品历史检验数据趋势对比，判断是否为偶发性还是系统性偏差，为根本原因分析提供依据。</div>
+      </div>
+      <div class="rec-card r3">
+        <div class="rec-card-title">⏱ 时效管控</div>
+        <div class="rec-card-body">液体样品复检须在初检后2小时内完成（挥发性样品更短），粉末样品不超过3小时，防止样品状态变化影响判断。</div>
+      </div>
+      <div class="rec-card r4">
+        <div class="rec-card-title">🎯 不确定度判定</div>
+        <div class="rec-card-body">若复检结果在合格限边缘，须计算测量不确定度（95%置信区间），当区间跨越合格限时，建议扩大样本量或采用更高精度方法。</div>
+      </div>
+      <div class="rec-card r5">
+        <div class="rec-card-title">⚡ 超标幅度分级响应</div>
+        <div class="rec-card-body">超标 ≤5%：优先排查分析误差；超标 5–20%：扩大排查至工艺过程；超标 >20%：立即停产排查，通知质量主管和相关方。</div>
+      </div>
+      <div class="rec-card r6">
+        <div class="rec-card-title">🔒 预防性措施建议</div>
+        <div class="rec-card-body">建立期间核查制度（每季度用标准物质验证方法），定期开展实验室内部能力验证，减少复检频率，提升初检可信度。</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  龙化化工中化分析项目超标指标复检核验流程 · 适用于液体及粉末产品质量管理 · 结合企业实际分析操作规程及国家/行业标准执行
+</footer>
+
+</body>
+</html>
