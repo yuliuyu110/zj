@@ -4,274 +4,407 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>龙化化工 · 超标指标复检核验流程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap');
-
   :root {
-    --white: #ffffff;
-    --gray-50: #f8fafc;
-    --gray-100: #f1f5f9;
-    --gray-200: #e2e8f0;
-    --gray-300: #cbd5e1;
-    --gray-400: #94a3b8;
-    --gray-500: #64748b;
-    --gray-600: #475569;
-    --gray-700: #334155;
-    --gray-800: #1e293b;
-    --gray-900: #0f172a;
-    --blue: #2563eb;
-    --blue-light: #eff6ff;
-    --blue-mid: #dbeafe;
-    --teal: #0d9488;
-    --teal-light: #f0fdfa;
-    --teal-mid: #ccfbf1;
-    --amber: #d97706;
-    --amber-light: #fffbeb;
-    --amber-mid: #fef3c7;
-    --red: #dc2626;
-    --red-light: #fef2f2;
-    --red-mid: #fee2e2;
-    --green: #16a34a;
-    --green-light: #f0fdf4;
-    --green-mid: #dcfce7;
-    --violet: #7c3aed;
-    --violet-light: #f5f3ff;
-    --violet-mid: #ede9fe;
-    --cyan: #0891b2;
-    --cyan-light: #ecfeff;
-    --cyan-mid: #cffafe;
-    --rose: #e11d48;
-    --rose-light: #fff1f2;
-    --rose-mid: #ffe4e6;
+    --navy:       #003366;
+    --navy-deep:  #001f44;
+    --navy-mid:   #0a4785;
+    --accent:     #006eb7;
+    --accent-lt:  #e6f0f9;
+    --accent-mid: #c5dff0;
+    --steel:      #4a7ca5;
+    --teal:       #00838f;
+    --teal-lt:    #e0f4f6;
+    --amber:      #c47a00;
+    --amber-lt:   #fff4de;
+    --red:        #c0392b;
+    --red-lt:     #fdf0ef;
+    --red-mid:    #f8d7d4;
+    --green:      #1a7a4a;
+    --green-lt:   #e6f4ed;
+    --green-mid:  #b8e4cc;
+    --white:      #ffffff;
+    --off-white:  #f7f9fc;
+    --border:     #d6dde6;
+    --border-lt:  #eaeff5;
+    --text-head:  #0a1e35;
+    --text-body:  #2c3e50;
+    --text-muted: #5d7080;
+    --text-faint: #8fa3b3;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Noto Sans SC', 'Inter', sans-serif;
-    background: var(--gray-50);
-    color: var(--gray-800);
-    min-height: 100vh;
-    line-height: 1.6;
-    font-size: 15px;
+    font-family: 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+    background: var(--off-white);
+    color: var(--text-body);
+    font-size: 14px;
+    line-height: 1.7;
   }
 
-  /* HEADER */
+  /* ── TOP NAV BAR ── */
+  .topbar {
+    background: var(--navy-deep);
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-brand {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .topbar-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .topbar-links li a {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.15s;
+  }
+  .topbar-links li a:hover { color: rgba(255,255,255,0.9); }
+
+  /* ── MAIN HEADER ── */
   header {
     background: var(--white);
-    border-bottom: 1px solid var(--gray-200);
+    border-bottom: 2px solid var(--navy);
   }
   .header-inner {
-    max-width: 1120px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 32px 36px;
+    padding: 0 32px;
+    display: flex;
+    align-items: stretch;
+    min-height: 90px;
+  }
+  .header-logo-col {
+    display: flex;
+    align-items: center;
+    padding: 20px 32px 20px 0;
+    border-right: 1px solid var(--border-lt);
+    flex-shrink: 0;
+  }
+  .logo-mark {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: flex-start;
+    gap: 2px;
   }
-  .header-top {
+  .logo-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .logo-en {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .header-title-col {
+    flex: 1;
+    padding: 22px 0 22px 32px;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
   }
   .header-eyebrow {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    background: var(--blue-light);
-    color: var(--blue);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 6px;
+    gap: 8px;
   }
-  .header-version {
-    display: inline-flex;
-    align-items: center;
-    background: var(--gray-100);
-    color: var(--gray-500);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-  }
-  h1 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: clamp(20px, 3.5vw, 32px);
+  .eyebrow-tag {
+    font-size: 10px;
     font-weight: 700;
-    color: var(--gray-900);
-    line-height: 1.3;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--accent);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .eyebrow-sub {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+  }
+  .header-h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(17px, 2.4vw, 24px);
+    font-weight: 600;
+    color: var(--text-head);
+    line-height: 1.35;
     letter-spacing: 0.02em;
   }
-  h1 em { font-style: normal; color: var(--blue); }
-  .header-meta {
+  .header-h1 em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .header-meta-row {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 0;
     flex-wrap: wrap;
   }
-  .meta-item {
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding-right: 16px;
+    margin-right: 16px;
+    border-right: 1px solid var(--border-lt);
+  }
+  .meta-chip:last-child { border-right: none; }
+  .meta-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .header-version-col {
+    display: flex;
+    align-items: center;
+    padding: 20px 0 20px 32px;
+    border-left: 1px solid var(--border-lt);
+    flex-shrink: 0;
+  }
+  .version-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .version-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .version-label {
+    font-size: 9px;
+    color: var(--text-faint);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb-bar {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+  }
+  .breadcrumb-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 38px;
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 13px;
-    color: var(--gray-500);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.02em;
   }
-  .meta-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    display: inline-block;
-    flex-shrink: 0;
-  }
-  .meta-sep {
-    width: 1px; height: 14px;
-    background: var(--gray-200);
-    flex-shrink: 0;
-  }
+  .breadcrumb-inner span { color: var(--text-muted); }
+  .bc-sep { color: var(--border); }
 
-  /* LAYOUT */
-  .container {
-    max-width: 1120px;
+  /* ── CONTENT LAYOUT ── */
+  .page-body {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 32px 80px;
+    padding: 36px 32px 80px;
     display: flex;
     flex-direction: column;
     gap: 48px;
   }
 
-  /* ALERT */
-  .alert {
+  /* ── ALERT BANNER ── */
+  .alert-banner {
     background: var(--white);
-    border: 1px solid var(--red-mid);
-    border-left: 3px solid var(--red);
-    border-radius: 10px;
-    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: flex-start;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.8;
+  }
+  .alert-icon {
+    width: 32px; height: 32px;
+    background: var(--red-lt);
+    border: 1px solid var(--red-mid);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
     font-size: 14px;
-    color: var(--gray-700);
-    line-height: 1.75;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    flex-shrink: 0;
+    margin-top: 1px;
   }
-  .alert-icon { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
-  .alert strong { color: var(--red); font-weight: 600; }
-  .alert b { color: var(--gray-900); font-weight: 600; }
+  .alert-banner strong { color: var(--red); font-weight: 600; }
+  .alert-banner b { color: var(--text-head); font-weight: 600; }
 
-  /* SECTION HEADER */
-  .section-head {
+  /* ── SECTION HEADER ── */
+  .sec-head {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
   }
-  .section-head h2 {
+  .sec-head h2 {
     font-family: 'Noto Serif SC', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--gray-900);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
     white-space: nowrap;
   }
-  .sh-line {
-    flex: 1;
-    height: 1px;
-    background: var(--gray-200);
+  .sec-head-sub {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
-  .sh-count {
-    font-size: 12px;
-    color: var(--gray-400);
-    font-weight: 500;
+  .sec-head-count {
+    margin-left: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
     white-space: nowrap;
   }
 
-  /* FLOWCHART */
+  /* ── FLOWCHART ── */
+  .flow-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 36px 40px;
+  }
   .flow-track {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 600px;
+    max-width: 620px;
     margin: 0 auto;
+    gap: 0;
   }
-
   .flow-node-wrap {
     width: 100%;
+    position: relative;
   }
-
   .flow-node {
     width: 100%;
     background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 14px 18px;
+    border: 1px solid var(--border);
     display: flex;
     align-items: center;
-    gap: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+    gap: 16px;
+    padding: 13px 18px;
+    transition: border-color 0.15s, box-shadow 0.15s;
     cursor: default;
   }
   .flow-node:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    border-color: var(--gray-300);
-    transform: translateY(-1px);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-lt);
+    z-index: 1;
+    position: relative;
   }
-
   .fn-badge {
-    width: 36px; height: 36px;
-    border-radius: 10px;
+    width: 34px; height: 34px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700;
+    font-size: 12px; font-weight: 700;
     flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
   }
   .fn-body { flex: 1; }
-  .fn-title { font-size: 14px; font-weight: 600; color: var(--gray-800); }
-  .fn-desc { font-size: 12px; color: var(--gray-500); margin-top: 2px; line-height: 1.5; }
+  .fn-title { font-size: 13px; font-weight: 600; color: var(--text-head); }
+  .fn-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.55; }
   .fn-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
-    padding: 3px 8px; border-radius: 6px; flex-shrink: 0;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 3px 7px; flex-shrink: 0;
     text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid;
   }
 
-  .fn-start .flow-node { border-color: #bfdbfe; background: var(--blue-light); }
-  .fn-start .fn-badge { background: var(--blue); color: #fff; }
-  .fn-start .fn-tag { background: var(--blue-mid); color: var(--blue); }
+  /* START node */
+  .fn-start .flow-node { background: var(--navy); border-color: var(--navy); }
+  .fn-start .fn-badge { color: var(--white); background: rgba(255,255,255,0.12); }
+  .fn-start .fn-title { color: var(--white); }
+  .fn-start .fn-desc { color: rgba(255,255,255,0.6); }
+  .fn-start .fn-tag { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
 
-  .fn-s1 .fn-badge { background: var(--teal-mid); color: var(--teal); }
-  .fn-s1 .fn-tag { background: var(--teal-light); color: var(--teal); }
+  /* Step colors - left accent stripe approach */
+  .fn-s1 .flow-node { border-left: 3px solid var(--teal); }
+  .fn-s1 .fn-badge { color: var(--teal); background: var(--teal-lt); }
+  .fn-s1 .fn-tag { color: var(--teal); border-color: var(--teal-lt); background: var(--teal-lt); }
 
-  .fn-s2 .fn-badge { background: var(--violet-mid); color: var(--violet); }
-  .fn-s2 .fn-tag { background: var(--violet-light); color: var(--violet); }
+  .fn-s2 .flow-node { border-left: 3px solid var(--steel); }
+  .fn-s2 .fn-badge { color: var(--steel); background: var(--accent-lt); }
+  .fn-s2 .fn-tag { color: var(--steel); border-color: var(--accent-lt); background: var(--accent-lt); }
 
-  .fn-s3 .fn-badge { background: var(--amber-mid); color: var(--amber); }
-  .fn-s3 .fn-tag { background: var(--amber-light); color: var(--amber); }
+  .fn-s3 .flow-node { border-left: 3px solid var(--amber); }
+  .fn-s3 .fn-badge { color: var(--amber); background: var(--amber-lt); }
+  .fn-s3 .fn-tag { color: var(--amber); border-color: var(--amber-lt); background: var(--amber-lt); }
 
-  .fn-s4 .fn-badge { background: var(--cyan-mid); color: var(--cyan); }
-  .fn-s4 .fn-tag { background: var(--cyan-light); color: var(--cyan); }
+  .fn-s4 .flow-node { border-left: 3px solid var(--accent); }
+  .fn-s4 .fn-badge { color: var(--accent); background: var(--accent-lt); }
+  .fn-s4 .fn-tag { color: var(--accent); border-color: var(--accent-lt); background: var(--accent-lt); }
 
-  .fn-s5 .fn-badge { background: var(--blue-mid); color: var(--blue); }
-  .fn-s5 .fn-tag { background: var(--blue-light); color: var(--blue); }
+  .fn-s5 .flow-node { border-left: 3px solid var(--navy-mid); }
+  .fn-s5 .fn-badge { color: var(--navy-mid); background: var(--accent-lt); }
+  .fn-s5 .fn-tag { color: var(--navy-mid); border-color: var(--accent-lt); background: var(--accent-lt); }
 
-  .fn-s6 .fn-badge { background: var(--rose-mid); color: var(--rose); }
-  .fn-s6 .fn-tag { background: var(--rose-light); color: var(--rose); }
+  .fn-s6 .flow-node { border-left: 3px solid var(--teal); }
+  .fn-s6 .fn-badge { color: var(--teal); background: var(--teal-lt); }
+  .fn-s6 .fn-tag { color: var(--teal); border-color: var(--teal-lt); background: var(--teal-lt); }
 
-  .fn-s7 .fn-badge { background: var(--green-mid); color: var(--green); }
-  .fn-s7 .fn-tag { background: var(--green-light); color: var(--green); }
+  .fn-s7 .flow-node { border-left: 3px solid var(--steel); }
+  .fn-s7 .fn-badge { color: var(--steel); background: var(--accent-lt); }
+  .fn-s7 .fn-tag { color: var(--steel); border-color: var(--accent-lt); background: var(--accent-lt); }
 
+  /* JUDGE node */
   .fn-judge .flow-node {
-    border-color: #fca5a5;
-    background: var(--red-light);
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 14px;
     padding: 16px 18px;
+    background: #fafbfd;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--navy);
   }
   .fn-judge .fn-top {
     display: flex; align-items: center; gap: 14px;
   }
-  .fn-judge .fn-badge { background: var(--red); color: #fff; }
-
+  .fn-judge .fn-badge {
+    color: var(--navy); background: var(--accent-lt);
+  }
   .fn-branches {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -279,29 +412,32 @@
   }
   .branch {
     background: var(--white);
-    border: 1px solid;
-    border-radius: 8px;
-    padding: 10px 12px;
+    border: 1px solid var(--border);
+    padding: 11px 14px;
     font-size: 12px;
-    line-height: 1.65;
-    color: var(--gray-700);
+    line-height: 1.7;
+    color: var(--text-body);
   }
-  .branch-pass { border-color: #86efac; }
-  .branch-fail { border-color: #fca5a5; }
-  .bl { font-weight: 700; font-size: 11px; margin-bottom: 4px; }
+  .branch-pass { border-top: 2px solid var(--green); }
+  .branch-fail { border-top: 2px solid var(--red); }
+  .bl { font-weight: 700; font-size: 11px; margin-bottom: 5px; letter-spacing: 0.04em; }
   .bl-pass { color: var(--green); }
   .bl-fail { color: var(--red); }
 
-  .fn-end .flow-node { border-color: #86efac; background: var(--green-light); }
-  .fn-end .fn-badge { background: var(--green); color: #fff; }
-  .fn-end .fn-tag { background: var(--green-mid); color: var(--green); }
+  /* END node */
+  .fn-end .flow-node { background: var(--navy); border-color: var(--navy); }
+  .fn-end .fn-badge { color: var(--white); background: rgba(255,255,255,0.12); }
+  .fn-end .fn-title { color: var(--white); }
+  .fn-end .fn-desc { color: rgba(255,255,255,0.6); }
+  .fn-end .fn-tag { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
 
+  /* connector */
   .fn-connector {
     width: 1px;
-    height: 22px;
-    background: var(--gray-200);
+    height: 20px;
+    background: var(--border);
     position: relative;
-    margin: 1px 0;
+    flex-shrink: 0;
   }
   .fn-connector::after {
     content: '';
@@ -311,226 +447,329 @@
     transform: translateX(-50%);
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 5px solid var(--gray-300);
+    border-top: 5px solid var(--border);
   }
 
-  /* CARDS */
+  /* ── DIMENSION CARDS GRID ── */
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
 
   .card {
     background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    transition: box-shadow 0.18s, transform 0.18s;
   }
-  .card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-  }
-  .card-top {
-    padding: 16px 18px;
+  .card-head {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border-lt);
     display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid var(--gray-100);
+    align-items: flex-start;
+    gap: 14px;
   }
-  .card-icon-wrap {
-    width: 38px; height: 38px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
+  .card-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--border);
+    line-height: 1;
     flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: -0.02em;
+    user-select: none;
   }
-  .ci-blue { background: var(--blue-light); }
-  .ci-violet { background: var(--violet-light); }
-  .ci-amber { background: var(--amber-light); }
-  .ci-cyan { background: var(--cyan-light); }
-  .ci-rose { background: var(--rose-light); }
-  .ci-green { background: var(--green-light); }
-
-  .card-title { font-size: 14px; font-weight: 600; color: var(--gray-800); }
-  .card-sub { font-size: 11px; color: var(--gray-400); margin-top: 1px; letter-spacing: 0.03em; }
-  .card-body { padding: 14px 18px; flex: 1; }
-
+  .card-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .card-meta { flex: 1; }
+  .card-title {
+    font-size: 13px; font-weight: 600;
+    color: var(--text-head);
+    line-height: 1.3;
+  }
+  .card-sub {
+    font-size: 10px; color: var(--text-faint);
+    letter-spacing: 0.08em; margin-top: 2px;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .card-body { padding: 14px 20px 16px; flex: 1; }
   .check-list { list-style: none; }
   .check-list li {
     padding: 7px 0;
-    font-size: 13px;
-    color: var(--gray-600);
-    border-bottom: 1px solid var(--gray-100);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-lt);
     line-height: 1.65;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
   }
   .check-list li:last-child { border-bottom: none; }
   .check-list li::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--blue);
-    margin-top: 7px;
+    content: '—';
+    color: var(--text-faint);
+    font-size: 10px;
     flex-shrink: 0;
-    opacity: 0.55;
+    margin-top: 3px;
+    font-family: 'IBM Plex Mono', monospace;
   }
-
-  .tip-box {
-    background: var(--amber-light);
-    border: 1px solid #fde68a;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-top: 12px;
-    font-size: 12px;
-    color: #92400e;
-    line-height: 1.7;
-  }
-  .tip-box strong { color: var(--amber); }
-
-  .type-liquid { color: var(--blue); font-weight: 500; }
+  .type-liquid { color: var(--accent); font-weight: 500; }
   .type-powder { color: var(--amber); font-weight: 500; }
 
-  /* TABLE */
-  .table-wrap {
+  .tip-box {
+    background: var(--amber-lt);
+    border-left: 3px solid var(--amber);
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #6b4400;
+    line-height: 1.75;
+  }
+  .tip-box strong { color: var(--amber); font-weight: 700; }
+
+  /* ── TABLE ── */
+  .table-outer {
     background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid var(--border);
     overflow-x: auto;
   }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead tr { background: var(--gray-50); border-bottom: 1px solid var(--gray-200); }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead {
+    background: var(--navy);
+  }
   thead th {
     padding: 12px 16px;
     text-align: left;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gray-500);
+    color: rgba(255,255,255,0.75);
     white-space: nowrap;
+    font-family: 'IBM Plex Mono', monospace;
+    border-right: 1px solid rgba(255,255,255,0.07);
   }
-  tbody tr { border-bottom: 1px solid var(--gray-100); transition: background 0.12s; }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid var(--border-lt); transition: background 0.1s; }
   tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: var(--gray-50); }
-  td { padding: 12px 16px; color: var(--gray-600); vertical-align: middle; }
-  td:first-child { color: var(--gray-800); font-weight: 600; }
+  tbody tr:hover { background: var(--off-white); }
+  td { padding: 11px 16px; color: var(--text-muted); vertical-align: middle; border-right: 1px solid var(--border-lt); }
+  td:last-child { border-right: none; }
+  td:first-child { color: var(--text-head); font-weight: 600; font-size: 13px; }
 
   .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
+    display: inline-flex; align-items: center;
+    padding: 2px 8px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.06em;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid;
   }
-  .badge-high { background: var(--red-mid); color: var(--red); }
-  .badge-mid { background: var(--amber-mid); color: var(--amber); }
-  .badge-low { background: var(--green-mid); color: var(--green); }
+  .badge-high { color: var(--red); border-color: var(--red-mid); background: var(--red-lt); }
+  .badge-mid  { color: var(--amber); border-color: #ffe0a0; background: var(--amber-lt); }
+  .badge-low  { color: var(--green); border-color: var(--green-mid); background: var(--green-lt); }
 
-  /* REC CARDS */
+  /* ── BEST PRACTICES GRID ── */
   .rec-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
   .rec-card {
     background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    transition: box-shadow 0.18s, transform 0.18s;
-    position: relative;
-    overflow: hidden;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: background 0.12s;
   }
-  .rec-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    border-radius: 12px 12px 0 0;
+  .rec-card:hover { background: var(--off-white); }
+  .rec-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
   }
-  .rec-card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
+  .rec-icon { font-size: 24px; line-height: 1; }
+  .rec-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--text-head);
+    line-height: 1.3;
   }
-  .rc-r1::before { background: var(--blue); }
-  .rc-r2::before { background: var(--teal); }
-  .rc-r3::before { background: var(--amber); }
-  .rc-r4::before { background: var(--violet); }
-  .rc-r5::before { background: var(--red); }
-  .rc-r6::before { background: var(--cyan); }
+  .rec-body {
+    font-size: 12px; color: var(--text-muted);
+    line-height: 1.85;
+    flex: 1;
+  }
+  .rec-divider {
+    height: 2px;
+    width: 28px;
+  }
+  .rc-r1 .rec-divider { background: var(--accent); }
+  .rc-r2 .rec-divider { background: var(--teal); }
+  .rc-r3 .rec-divider { background: var(--amber); }
+  .rc-r4 .rec-divider { background: var(--navy-mid); }
+  .rc-r5 .rec-divider { background: var(--red); }
+  .rc-r6 .rec-divider { background: var(--green); }
 
-  .rec-card-emoji { font-size: 22px; margin-bottom: 10px; }
-  .rec-card-title { font-size: 14px; font-weight: 700; color: var(--gray-800); margin-bottom: 8px; }
-  .rec-card-body { font-size: 13px; color: var(--gray-500); line-height: 1.8; }
-
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
-    background: var(--white);
-    border-top: 1px solid var(--gray-200);
-    padding: 20px 32px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--gray-400);
-    letter-spacing: 0.02em;
+    background: var(--navy-deep);
+    padding: 28px 32px;
+    margin-top: 0;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .footer-brand {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+  }
+  .footer-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .footer-tag {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 3px 9px;
+    letter-spacing: 0.06em;
+    font-family: 'IBM Plex Mono', monospace;
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 640px) {
-    .header-inner { padding: 28px 20px 24px; }
-    .container { padding: 28px 20px 60px; gap: 36px; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .rec-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 680px) {
+    .header-inner { flex-direction: column; align-items: flex-start; padding: 20px; min-height: auto; }
+    .header-logo-col { border-right: none; border-bottom: 1px solid var(--border-lt); padding: 0 0 16px; }
+    .header-title-col { padding: 16px 0 0; }
+    .header-version-col { border-left: none; padding: 12px 0 0; }
+    .page-body { padding: 24px 20px 60px; gap: 36px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .rec-grid { grid-template-columns: 1fr; }
     .fn-branches { grid-template-columns: 1fr; }
-    footer { padding: 20px; }
+    .flow-wrap { padding: 24px 16px; }
+    .breadcrumb-bar { padding: 0 20px; }
+    .topbar { padding: 0 20px; }
+    footer { padding: 24px 20px; }
   }
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-brand">Longhua Chemical · Quality Management System</span>
+    <ul class="topbar-links">
+      <li><a href="#">标准文件</a></li>
+      <li><a href="#">操作规程</a></li>
+      <li><a href="#">联系我们</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
 <header>
   <div class="header-inner">
-    <div class="header-top">
-      <span class="header-eyebrow">⚗ 龙化化工质检科 · Quality Control</span>
-      <span class="header-version">V 2.0</span>
+    <div class="header-logo-col">
+      <div class="logo-mark">
+        <div class="logo-cn">龙岩龙化化工有限公司</div>
+        <div class="logo-en">Longyan Longhua Chemical Co.</div>
+      </div>
     </div>
-    <h1>龙化化工中化分析项目超标指标<em>复检核验流程</em></h1>
-    <div class="header-meta">
-      <div class="meta-item">
-        <span class="meta-dot" style="background:#2563eb"></span>
-        适用：液体产品
+
+    <div class="header-title-col">
+      <div class="header-eyebrow">
+        <span class="eyebrow-tag">Quality Control</span>
+        <span class="eyebrow-sub">质检科 · 内部作业标准</span>
       </div>
-      <div class="meta-sep"></div>
-      <div class="meta-item">
-        <span class="meta-dot" style="background:#d97706"></span>
-        适用：粉末产品
+      <h1 class="header-h1">中化分析项目超标指标<em>复检核验流程</em></h1>
+      <div class="header-meta-row">
+        <div class="meta-chip">
+          <span class="meta-dot" style="background:var(--accent)"></span>
+          液体产品适用
+        </div>
+        <div class="meta-chip">
+          <span class="meta-dot" style="background:var(--amber)"></span>
+          粉末产品适用
+        </div>
+        <div class="meta-chip">
+          <span class="meta-dot" style="background:var(--teal)"></span>
+          覆盖 6 大核验维度
+        </div>
+        <div class="meta-chip">
+          <span class="meta-dot" style="background:var(--text-faint)"></span>
+          依据 GB / HG / ISO 执行
+        </div>
       </div>
-      <div class="meta-sep"></div>
-      <div class="meta-item">
-        <span class="meta-dot" style="background:#16a34a"></span>
-        覆盖 6 大核验维度
-      </div>
-      <div class="meta-sep"></div>
-      <div class="meta-item">
-        <span class="meta-dot" style="background:#94a3b8"></span>
-        结合 GB / HG / ISO 执行
+    </div>
+
+    <div class="header-version-col">
+      <div class="version-badge">
+        <div class="version-num">V2.0</div>
+        <div class="version-label">Current Rev.</div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="container">
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <span>首页</span>
+    <span class="bc-sep">›</span>
+    <span>质量管理</span>
+    <span class="bc-sep">›</span>
+    <span>复检核验流程</span>
+  </div>
+</div>
 
-  <div class="alert">
-    <span class="alert-icon">⚠️</span>
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- ALERT -->
+  <div class="alert-banner">
+    <div class="alert-icon">⚠</div>
     <div>
       <strong>触发条件：</strong>当初次检验中任一指标超出合格判定标准时，须在 <b>1 小时内</b> 启动本复检程序。复检须由具备资质的分析人员执行，复检结果作为最终判定依据。<b>复检前严禁对原始样品进行任何处置。</b>
     </div>
@@ -538,159 +777,165 @@
 
   <!-- FLOWCHART -->
   <section>
-    <div class="section-head">
+    <div class="sec-head">
       <h2>复检核验总流程</h2>
-      <div class="sh-line"></div>
-      <span class="sh-count">10 步骤</span>
+      <span class="sec-head-sub">Retest Verification Procedure</span>
+      <span class="sec-head-count">10 STEPS</span>
     </div>
-    <div class="flow-track">
 
-      <div class="flow-node-wrap fn-start">
-        <div class="flow-node">
-          <div class="fn-badge">★</div>
-          <div class="fn-body">
-            <div class="fn-title">启动复检 · 初步评估</div>
-            <div class="fn-desc">记录超标指标及偏差幅度 → 隔离原批次样品 → 指定复检负责人</div>
-          </div>
-          <div class="fn-tag">START</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
+    <div class="flow-wrap">
+      <div class="flow-track">
 
-      <div class="flow-node-wrap fn-s1">
-        <div class="flow-node">
-          <div class="fn-badge">01</div>
-          <div class="fn-body">
-            <div class="fn-title">样品代表性核验</div>
-            <div class="fn-desc">重新采样 · 核查原始样品状态 · 确认采样规程合规性</div>
-          </div>
-          <div class="fn-tag">样品</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-s2">
-        <div class="flow-node">
-          <div class="fn-badge">02</div>
-          <div class="fn-body">
-            <div class="fn-title">分析试剂确认</div>
-            <div class="fn-desc">核查有效期 · 纯度等级 · 标准溶液标定 · 空白值测定</div>
-          </div>
-          <div class="fn-tag">试剂</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-s3">
-        <div class="flow-node">
-          <div class="fn-badge">03</div>
-          <div class="fn-body">
-            <div class="fn-title">分析方法核查</div>
-            <div class="fn-desc">确认执行标准版本 · 加标回收率验证 · 干扰因素排查</div>
-          </div>
-          <div class="fn-tag">方法</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-s4">
-        <div class="flow-node">
-          <div class="fn-badge">04</div>
-          <div class="fn-body">
-            <div class="fn-title">玻璃器皿 &amp; 仪器设备</div>
-            <div class="fn-desc">清洁度检查 · 容量校准 · 仪器校准状态 · 交叉污染排查</div>
-          </div>
-          <div class="fn-tag">器皿</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-s5">
-        <div class="flow-node">
-          <div class="fn-badge">05</div>
-          <div class="fn-body">
-            <div class="fn-title">执行平行复检分析</div>
-            <div class="fn-desc">至少 3 次平行 · 盲样对比 · 参考标准品同步分析</div>
-          </div>
-          <div class="fn-tag">分析</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-s6">
-        <div class="flow-node">
-          <div class="fn-badge">06</div>
-          <div class="fn-body">
-            <div class="fn-title">分析数据处理与统计</div>
-            <div class="fn-desc">离群值检验 · 精密度/准确度评估 · 不确定度计算</div>
-          </div>
-          <div class="fn-tag">数据</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-s7">
-        <div class="flow-node">
-          <div class="fn-badge">07</div>
-          <div class="fn-body">
-            <div class="fn-title">记录归档</div>
-            <div class="fn-desc">原始记录完整性 · 电子台账录入 · 复检报告签字审核</div>
-          </div>
-          <div class="fn-tag">记录</div>
-        </div>
-      </div>
-      <div class="fn-connector"></div>
-
-      <div class="flow-node-wrap fn-judge">
-        <div class="flow-node">
-          <div class="fn-top">
-            <div class="fn-badge">⊙</div>
+        <div class="flow-node-wrap fn-start">
+          <div class="flow-node">
+            <div class="fn-badge">★</div>
             <div class="fn-body">
-              <div class="fn-title">综合判定 · 结果裁定</div>
+              <div class="fn-title">启动复检 · 初步评估</div>
+              <div class="fn-desc">记录超标指标及偏差幅度 → 隔离原批次样品 → 指定复检负责人</div>
             </div>
+            <div class="fn-tag">START</div>
           </div>
-          <div class="fn-branches">
-            <div class="branch branch-pass">
-              <div class="bl bl-pass">✓ 复检合格</div>
-              初检为误差所致 → 批次放行 → 原始异常归因分析 → 改进措施记录
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s1">
+          <div class="flow-node">
+            <div class="fn-badge">01</div>
+            <div class="fn-body">
+              <div class="fn-title">样品代表性核验</div>
+              <div class="fn-desc">重新采样 · 核查原始样品状态 · 确认采样规程合规性</div>
             </div>
-            <div class="branch branch-fail">
-              <div class="bl bl-fail">✕ 复检仍超标</div>
-              确认不合格 → 批次隔离 → 启动偏差调查 → 通知生产/供应商 → 处置决策
+            <div class="fn-tag">样品</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s2">
+          <div class="flow-node">
+            <div class="fn-badge">02</div>
+            <div class="fn-body">
+              <div class="fn-title">分析试剂确认</div>
+              <div class="fn-desc">核查有效期 · 纯度等级 · 标准溶液标定 · 空白值测定</div>
+            </div>
+            <div class="fn-tag">试剂</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s3">
+          <div class="flow-node">
+            <div class="fn-badge">03</div>
+            <div class="fn-body">
+              <div class="fn-title">分析方法核查</div>
+              <div class="fn-desc">确认执行标准版本 · 加标回收率验证 · 干扰因素排查</div>
+            </div>
+            <div class="fn-tag">方法</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s4">
+          <div class="flow-node">
+            <div class="fn-badge">04</div>
+            <div class="fn-body">
+              <div class="fn-title">玻璃器皿 &amp; 仪器设备</div>
+              <div class="fn-desc">清洁度检查 · 容量校准 · 仪器校准状态 · 交叉污染排查</div>
+            </div>
+            <div class="fn-tag">器皿</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s5">
+          <div class="flow-node">
+            <div class="fn-badge">05</div>
+            <div class="fn-body">
+              <div class="fn-title">执行平行复检分析</div>
+              <div class="fn-desc">至少 3 次平行 · 盲样对比 · 参考标准品同步分析</div>
+            </div>
+            <div class="fn-tag">分析</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s6">
+          <div class="flow-node">
+            <div class="fn-badge">06</div>
+            <div class="fn-body">
+              <div class="fn-title">分析数据处理与统计</div>
+              <div class="fn-desc">离群值检验 · 精密度/准确度评估 · 不确定度计算</div>
+            </div>
+            <div class="fn-tag">数据</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-s7">
+          <div class="flow-node">
+            <div class="fn-badge">07</div>
+            <div class="fn-body">
+              <div class="fn-title">记录归档</div>
+              <div class="fn-desc">原始记录完整性 · 电子台账录入 · 复检报告签字审核</div>
+            </div>
+            <div class="fn-tag">记录</div>
+          </div>
+        </div>
+        <div class="fn-connector"></div>
+
+        <div class="flow-node-wrap fn-judge">
+          <div class="flow-node">
+            <div class="fn-top">
+              <div class="fn-badge">⊙</div>
+              <div class="fn-body">
+                <div class="fn-title">综合判定 · 结果裁定</div>
+              </div>
+              <div class="fn-tag">判定</div>
+            </div>
+            <div class="fn-branches">
+              <div class="branch branch-pass">
+                <div class="bl bl-pass">✓ 复检合格</div>
+                初检为误差所致 → 批次放行 → 原始异常归因分析 → 改进措施记录
+              </div>
+              <div class="branch branch-fail">
+                <div class="bl bl-fail">✕ 复检仍超标</div>
+                确认不合格 → 批次隔离 → 启动偏差调查 → 通知生产/供应商 → 处置决策
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="fn-connector"></div>
+        <div class="fn-connector"></div>
 
-      <div class="flow-node-wrap fn-end">
-        <div class="flow-node">
-          <div class="fn-badge">✓</div>
-          <div class="fn-body">
-            <div class="fn-title">闭环处置 &amp; CAPA 跟踪</div>
-            <div class="fn-desc">根本原因分析 → 纠正预防措施 → 效果验证 → 流程更新</div>
+        <div class="flow-node-wrap fn-end">
+          <div class="flow-node">
+            <div class="fn-badge">✓</div>
+            <div class="fn-body">
+              <div class="fn-title">闭环处置 &amp; CAPA 跟踪</div>
+              <div class="fn-desc">根本原因分析 → 纠正预防措施 → 效果验证 → 流程更新</div>
+            </div>
+            <div class="fn-tag">END</div>
           </div>
-          <div class="fn-tag">END</div>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
   <!-- DETAIL CARDS -->
   <section>
-    <div class="section-head">
+    <div class="sec-head">
       <h2>六大核验维度 · 详细操作要点</h2>
-      <div class="sh-line"></div>
-      <span class="sh-count">6 维度</span>
+      <span class="sec-head-sub">Six Verification Dimensions</span>
+      <span class="sec-head-count">6 DIMENSIONS</span>
     </div>
+
     <div class="cards-grid">
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-icon-wrap ci-blue">🧪</div>
-          <div>
-            <div class="card-title">① 样品代表性核验</div>
+        <div class="card-head">
+          <div class="card-num">01</div>
+          <div class="card-icon">🧪</div>
+          <div class="card-meta">
+            <div class="card-title">样品代表性核验</div>
             <div class="card-sub">Sampling Representativeness</div>
           </div>
         </div>
@@ -707,10 +952,11 @@
       </div>
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-icon-wrap ci-violet">⚗️</div>
-          <div>
-            <div class="card-title">② 分析试剂确认</div>
+        <div class="card-head">
+          <div class="card-num">02</div>
+          <div class="card-icon">⚗️</div>
+          <div class="card-meta">
+            <div class="card-title">分析试剂确认</div>
             <div class="card-sub">Reagent Verification</div>
           </div>
         </div>
@@ -727,10 +973,11 @@
       </div>
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-icon-wrap ci-amber">📋</div>
-          <div>
-            <div class="card-title">③ 分析方法核查</div>
+        <div class="card-head">
+          <div class="card-num">03</div>
+          <div class="card-icon">📋</div>
+          <div class="card-meta">
+            <div class="card-title">分析方法核查</div>
             <div class="card-sub">Method Verification</div>
           </div>
         </div>
@@ -747,10 +994,11 @@
       </div>
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-icon-wrap ci-cyan">🔬</div>
-          <div>
-            <div class="card-title">④ 玻璃器皿 &amp; 仪器</div>
+        <div class="card-head">
+          <div class="card-num">04</div>
+          <div class="card-icon">🔬</div>
+          <div class="card-meta">
+            <div class="card-title">玻璃器皿 &amp; 仪器</div>
             <div class="card-sub">Glassware &amp; Instrument Check</div>
           </div>
         </div>
@@ -767,10 +1015,11 @@
       </div>
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-icon-wrap ci-rose">📊</div>
-          <div>
-            <div class="card-title">⑤ 分析数据处理</div>
+        <div class="card-head">
+          <div class="card-num">05</div>
+          <div class="card-icon">📊</div>
+          <div class="card-meta">
+            <div class="card-title">分析数据处理</div>
             <div class="card-sub">Data Processing &amp; Statistics</div>
           </div>
         </div>
@@ -787,10 +1036,11 @@
       </div>
 
       <div class="card">
-        <div class="card-top">
-          <div class="card-icon-wrap ci-green">📁</div>
-          <div>
-            <div class="card-title">⑥ 记录与归档管理</div>
+        <div class="card-head">
+          <div class="card-num">06</div>
+          <div class="card-icon">📁</div>
+          <div class="card-meta">
+            <div class="card-title">记录与归档管理</div>
             <div class="card-sub">Records &amp; Documentation</div>
           </div>
         </div>
@@ -811,12 +1061,12 @@
 
   <!-- MATRIX TABLE -->
   <section>
-    <div class="section-head">
+    <div class="sec-head">
       <h2>常见超标原因排查矩阵</h2>
-      <div class="sh-line"></div>
-      <span class="sh-count">7 类来源</span>
+      <span class="sec-head-sub">Root Cause Matrix</span>
+      <span class="sec-head-count">7 CATEGORIES</span>
     </div>
-    <div class="table-wrap">
+    <div class="table-outer">
       <table>
         <thead>
           <tr>
@@ -832,49 +1082,49 @@
             <td>样品问题</td>
             <td>采样不均匀；样品降解；容器污染</td>
             <td>液体 · 粉末</td>
-            <td><span class="badge badge-high">高</span></td>
+            <td><span class="badge badge-high">HIGH</span></td>
             <td>重新采样 + 平行样对比</td>
           </tr>
           <tr>
             <td>试剂问题</td>
             <td>标液过期失效；空白值偏高；纯度不足</td>
             <td>液体 · 粉末</td>
-            <td><span class="badge badge-high">高</span></td>
+            <td><span class="badge badge-high">HIGH</span></td>
             <td>重新配制 + 空白测定</td>
           </tr>
           <tr>
             <td>方法问题</td>
             <td>基质干扰；版本错误；参数偏差</td>
             <td>液体（颜色深）· 粉末（难溶）</td>
-            <td><span class="badge badge-mid">中</span></td>
+            <td><span class="badge badge-mid">MED</span></td>
             <td>加标回收 + 标准核对</td>
           </tr>
           <tr>
             <td>器皿问题</td>
             <td>清洗不彻底；容量超差；交叉污染</td>
             <td>液体 · 粉末</td>
-            <td><span class="badge badge-mid">中</span></td>
+            <td><span class="badge badge-mid">MED</span></td>
             <td>更换器皿 + 空白对比</td>
           </tr>
           <tr>
             <td>仪器问题</td>
             <td>未校准；漂移；检测器污染</td>
             <td>液体（仪器法为主）</td>
-            <td><span class="badge badge-mid">中</span></td>
+            <td><span class="badge badge-mid">MED</span></td>
             <td>校准验证 + 标准品核查</td>
           </tr>
           <tr>
             <td>操作问题</td>
             <td>操作失误；环境污染；计算错误</td>
             <td>液体 · 粉末</td>
-            <td><span class="badge badge-low">低</span></td>
+            <td><span class="badge badge-low">LOW</span></td>
             <td>复核计算 + 双人复检</td>
           </tr>
           <tr>
             <td>产品本身</td>
             <td>生产工艺异常；原料不合格；批次波动</td>
             <td>液体 · 粉末</td>
-            <td><span class="badge badge-high">高</span></td>
+            <td><span class="badge badge-high">HIGH</span></td>
             <td>第三方检测 + 工艺追溯</td>
           </tr>
         </tbody>
@@ -882,51 +1132,84 @@
     </div>
   </section>
 
-  <!-- RECOMMENDATIONS -->
+  <!-- BEST PRACTICES -->
   <section>
-    <div class="section-head">
+    <div class="sec-head">
       <h2>关键建议 · Best Practices</h2>
-      <div class="sh-line"></div>
-      <span class="sh-count">6 条原则</span>
+      <span class="sec-head-sub">Quality Assurance Principles</span>
+      <span class="sec-head-count">6 PRINCIPLES</span>
     </div>
     <div class="rec-grid">
+
       <div class="rec-card rc-r1">
-        <div class="rec-card-emoji">🔄</div>
-        <div class="rec-card-title">双人独立复检原则</div>
-        <div class="rec-card-body">复检须由不同于初检的分析人员执行，消除操作习惯导致的系统偏差。必要时可安排第三方实验室盲样比对。</div>
+        <div class="rec-num">PRINCIPLE — 01</div>
+        <div class="rec-divider"></div>
+        <div class="rec-icon">🔄</div>
+        <div class="rec-title">双人独立复检原则</div>
+        <div class="rec-body">复检须由不同于初检的分析人员执行，消除操作习惯导致的系统偏差。必要时可安排第三方实验室盲样比对。</div>
       </div>
+
       <div class="rec-card rc-r2">
-        <div class="rec-card-emoji">📈</div>
-        <div class="rec-card-title">趋势数据对比</div>
-        <div class="rec-card-body">将本次结果与该产品历史检验数据趋势对比，判断是否为偶发性还是系统性偏差，为根本原因分析提供依据。</div>
+        <div class="rec-num">PRINCIPLE — 02</div>
+        <div class="rec-divider"></div>
+        <div class="rec-icon">📈</div>
+        <div class="rec-title">趋势数据对比</div>
+        <div class="rec-body">将本次结果与该产品历史检验数据趋势对比，判断是否为偶发性还是系统性偏差，为根本原因分析提供依据。</div>
       </div>
+
       <div class="rec-card rc-r3">
-        <div class="rec-card-emoji">⏱</div>
-        <div class="rec-card-title">时效管控</div>
-        <div class="rec-card-body">液体样品复检须在初检后 2 小时内完成（挥发性样品更短），粉末样品不超过 3 小时，防止样品状态变化影响判断。</div>
+        <div class="rec-num">PRINCIPLE — 03</div>
+        <div class="rec-divider"></div>
+        <div class="rec-icon">⏱</div>
+        <div class="rec-title">时效管控</div>
+        <div class="rec-body">液体样品复检须在初检后 2 小时内完成（挥发性样品更短），粉末样品不超过 3 小时，防止样品状态变化影响判断。</div>
       </div>
+
       <div class="rec-card rc-r4">
-        <div class="rec-card-emoji">🎯</div>
-        <div class="rec-card-title">不确定度判定</div>
-        <div class="rec-card-body">若复检结果在合格限边缘，须计算测量不确定度（95% 置信区间），当区间跨越合格限时，建议扩大样本量或采用更高精度方法。</div>
+        <div class="rec-num">PRINCIPLE — 04</div>
+        <div class="rec-divider"></div>
+        <div class="rec-icon">🎯</div>
+        <div class="rec-title">不确定度判定</div>
+        <div class="rec-body">若复检结果在合格限边缘，须计算测量不确定度（95% 置信区间），当区间跨越合格限时，建议扩大样本量或采用更高精度方法。</div>
       </div>
+
       <div class="rec-card rc-r5">
-        <div class="rec-card-emoji">⚡</div>
-        <div class="rec-card-title">超标幅度分级响应</div>
-        <div class="rec-card-body">超标 ≤5%：优先排查分析误差；超标 5–20%：扩大排查至工艺过程；超标 &gt;20%：立即停产排查，通知质量主管和相关方。</div>
+        <div class="rec-num">PRINCIPLE — 05</div>
+        <div class="rec-divider"></div>
+        <div class="rec-icon">⚡</div>
+        <div class="rec-title">超标幅度分级响应</div>
+        <div class="rec-body">超标 ≤5%：优先排查分析误差；超标 5–20%：扩大排查至工艺过程；超标 &gt;20%：立即停产排查，通知质量主管和相关方。</div>
       </div>
+
       <div class="rec-card rc-r6">
-        <div class="rec-card-emoji">🔒</div>
-        <div class="rec-card-title">预防性措施建议</div>
-        <div class="rec-card-body">建立期间核查制度（每季度用标准物质验证方法），定期开展实验室内部能力验证，减少复检频率，提升初检可信度。</div>
+        <div class="rec-num">PRINCIPLE — 06</div>
+        <div class="rec-divider"></div>
+        <div class="rec-icon">🔒</div>
+        <div class="rec-title">预防性措施建议</div>
+        <div class="rec-body">建立期间核查制度（每季度用标准物质验证方法），定期开展实验室内部能力验证，减少复检频率，提升初检可信度。</div>
       </div>
+
     </div>
   </section>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-  龙化化工中化分析项目超标指标复检核验流程 · 适用于液体及粉末产品质量管理 · 结合龙化公司实际分析操作规程及国家/行业标准执行
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">龙化化工 · 质量管理体系文件</div>
+      <div class="footer-copy">
+        中化分析项目超标指标复检核验流程 · 适用于液体及粉末产品质量管理<br>
+        结合龙化公司实际分析操作规程及国家/行业标准执行
+      </div>
+    </div>
+    <div class="footer-tags">
+      <span class="footer-tag">V2.0</span>
+      <span class="footer-tag">GB / HG / ISO</span>
+      <span class="footer-tag">内部受控文件</span>
+    </div>
+  </div>
 </footer>
 
 </body>
